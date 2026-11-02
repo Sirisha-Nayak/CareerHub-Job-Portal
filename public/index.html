@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Dashboard & Job Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">💼</div>
+                <div class="brand-text">
+                    <h1>CareerHub</h1>
+                    <span>Portal Management</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html" class="active">📊 Dashboard</a></li>
+                <li class="nav-item"><a href="view.html">📋 View Records</a></li>
+                <li class="nav-item"><a href="add.html">➕ Add Job</a></li>
+                <li class="nav-item"><a href="edit.html">✏️ Edit Job</a></li>
+                <li class="nav-item"><a href="delete.html">🗑️ Delete Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h2>CareerHub Administration Dashboard</h2>
+            <p>Monitor your active career listings, track recruiter statistics, and manage CRUD records in real-time.</p>
+        </div>
+    </section>
+
+    <!-- Main Dashboard Container -->
+    <main class="main-container">
+
+        <!-- Live Summary Metric Cards -->
+        <div class="page-header">
+            <div>
+                <h2>📊 Key Metrics & Highlights</h2>
+                <p>Real-time analytics aggregated directly from your MySQL database</p>
+            </div>
+            <div>
+                <button class="btn btn-outline btn-sm" onclick="location.reload()">🔄 Refresh Stats</button>
+            </div>
+        </div>
+
+        <section class="stats-grid">
+            <div class="stat-card accent-purple">
+                <div class="stat-icon">💼</div>
+                <div class="stat-info">
+                    <h3 id="stat-total-jobs">...</h3>
+                    <p>Total Job Postings</p>
+                </div>
+            </div>
+
+            <div class="stat-card accent-cyan">
+                <div class="stat-icon">🏢</div>
+                <div class="stat-info">
+                    <h3 id="stat-total-companies">...</h3>
+                    <p>Hiring Companies</p>
+                </div>
+            </div>
+
+            <div class="stat-card accent-emerald">
+                <div class="stat-icon">👥</div>
+                <div class="stat-info">
+                    <h3 id="stat-total-posts">...</h3>
+                    <p>Total Open Positions</p>
+                </div>
+            </div>
+
+            <div class="stat-card accent-amber">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <h3 id="stat-avg-salary">...</h3>
+                    <p>Average Monthly Salary</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Panel -->
+        <section class="quick-actions">
+            <h3>⚡ Quick Actions</h3>
+            <div class="actions-container">
+                <a href="add.html" class="btn btn-primary">➕ Post New Job Record</a>
+                <a href="view.html" class="btn btn-cyan">📋 Browse All Records</a>
+                <a href="edit.html" class="btn btn-secondary">✏️ Modify Existing Job</a>
+                <a href="delete.html" class="btn btn-outline">🗑️ Remove Job Listing</a>
+            </div>
+        </section>
+
+        <!-- Recent Records Table -->
+        <section class="table-card">
+            <div class="table-header-bar">
+                <div class="table-header-title">🕒 Recently Added Jobs</div>
+                <a href="view.html" class="btn btn-outline btn-sm">View All in Table →</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Salary</th>
+                            <th>Posts</th>
+                            <th>Interview Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-jobs-body">
+                        <!-- Populated dynamically via dashboard.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="recent-state" class="state-message" style="display: none;"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Job Portal. Built with Express & MySQL.</p>
+        <p>Enterprise Job Management System</p>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

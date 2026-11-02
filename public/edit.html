@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Edit Job Record</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">💼</div>
+                <div class="brand-text">
+                    <h1>CareerHub</h1>
+                    <span>Portal Management</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">📊 Dashboard</a></li>
+                <li class="nav-item"><a href="view.html">📋 View Records</a></li>
+                <li class="nav-item"><a href="add.html">➕ Add Job</a></li>
+                <li class="nav-item"><a href="edit.html" class="active">✏️ Edit Job</a></li>
+                <li class="nav-item"><a href="delete.html">🗑️ Delete Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>✏️ Update Existing Job Opportunity</h2>
+                <p>Select any registered job to retrieve its current values, adjust details, and save changes</p>
+            </div>
+            <div>
+                <a href="view.html" class="btn btn-outline">← Back to Records</a>
+            </div>
+        </div>
+
+        <!-- Job Selection Card -->
+        <section class="filter-card">
+            <div style="font-weight: 700; color: var(--navy-header); margin-bottom: 12px;">
+                🎯 Step 1: Select Job Record to Edit
+            </div>
+            <div class="filter-grid">
+                <div class="form-group" style="flex: 2;">
+                    <label for="select-job-id">Select from Database Listings:</label>
+                    <select id="select-job-id" class="form-control">
+                        <option value="">-- Choose a Job from Database --</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="flex: 1;">
+                    <label for="manual-job-id">Or Enter Job ID:</label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="number" id="manual-job-id" class="form-control" placeholder="e.g. 1" min="1">
+                        <button type="button" id="load-job-btn" class="btn btn-secondary">Load</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Status / Placeholder Message -->
+        <div id="edit-status-msg" class="state-message">
+            <div class="icon">👆</div>
+            <p><strong>Please select a job above or pass a Job ID in the URL.</strong></p>
+            <p style="font-size: 13px; color: #94a3b8; margin-top: 4px;">Existing record data will populate automatically into the form.</p>
+        </div>
+
+        <!-- Edit Form Card (hidden until a job is loaded) -->
+        <section class="form-card" id="edit-job-form-wrapper" style="display: block;">
+            <form id="edit-job-form" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
+                    <h3 class="form-title" style="margin: 0; border: none; padding: 0;">Editing Job Record</h3>
+                    <div>
+                        <span style="font-size: 13px; color: var(--text-secondary); margin-right: 6px;">Primary Key:</span>
+                        <span id="display_job_id" class="badge-id" style="font-size: 14px; background: #e0e7ff; color: #4338ca;">#0</span>
+                    </div>
+                </div>
+
+                <!-- Hidden field for Primary Key -->
+                <input type="hidden" id="job_id">
+
+                <div class="form-grid">
+
+                    <!-- Job Title -->
+                    <div class="form-group form-group-full">
+                        <label for="job_title">Job Title <span class="required-star">*</span></label>
+                        <input type="text" id="job_title" class="form-control" required>
+                    </div>
+
+                    <!-- Company Name -->
+                    <div class="form-group">
+                        <label for="company_name">Company Name <span class="required-star">*</span></label>
+                        <input type="text" id="company_name" class="form-control" required>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label for="job_location">Location / City <span class="required-star">*</span></label>
+                        <input type="text" id="job_location" class="form-control" required>
+                    </div>
+
+                    <!-- Salary -->
+                    <div class="form-group">
+                        <label for="salary">Monthly Salary (₹ INR)</label>
+                        <input type="number" id="salary" class="form-control" min="0" step="0.01">
+                    </div>
+
+                    <!-- Number of Posts -->
+                    <div class="form-group">
+                        <label for="number_of_posts">Number of Openings</label>
+                        <input type="number" id="number_of_posts" class="form-control" min="1">
+                    </div>
+
+                    <!-- Required Skills -->
+                    <div class="form-group form-group-full">
+                        <label for="required_skills">Required Skills</label>
+                        <input type="text" id="required_skills" class="form-control" placeholder="e.g. React, Node.js, MySQL">
+                        <span class="form-hint">Separate skills with commas</span>
+                    </div>
+
+                    <!-- Interview Date -->
+                    <div class="form-group form-group-full">
+                        <label for="interview_date">Scheduled Interview Date</label>
+                        <input type="date" id="interview_date" class="form-control">
+                    </div>
+
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="form-actions">
+                    <a href="view.html" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" id="update-btn" class="btn btn-primary">💾 Update Job Record</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Job Portal. Built with Express & MySQL.</p>
+        <p>Enterprise Job Management System</p>
+    </footer>
+
+    <script src="js/edit.js"></script>
+</body>
+</html>

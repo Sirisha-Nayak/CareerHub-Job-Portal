@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - View All Job Records</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">💼</div>
+                <div class="brand-text">
+                    <h1>CareerHub</h1>
+                    <span>Portal Management</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">📊 Dashboard</a></li>
+                <li class="nav-item"><a href="view.html" class="active">📋 View Records</a></li>
+                <li class="nav-item"><a href="add.html">➕ Add Job</a></li>
+                <li class="nav-item"><a href="edit.html">✏️ Edit Job</a></li>
+                <li class="nav-item"><a href="delete.html">🗑️ Delete Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>📋 Job Postings Directory</h2>
+                <p>Browse, search, and manage all active job vacancies stored in your MySQL database</p>
+            </div>
+            <div>
+                <a href="add.html" class="btn btn-primary">➕ Post New Job</a>
+            </div>
+        </div>
+
+        <!-- Filter & Search Section -->
+        <section class="filter-card">
+            <form id="search-filter-form">
+                <div class="filter-grid">
+                    <div class="form-group">
+                        <label for="filter-keyword">🔍 Search Title or Skills</label>
+                        <input type="text" id="filter-keyword" class="form-control" placeholder="e.g. Java, Python, React">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter-location">📍 Location</label>
+                        <input type="text" id="filter-location" class="form-control" placeholder="e.g. Hyderabad, Bengaluru">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter-min-salary">💰 Min Salary (₹)</label>
+                        <input type="number" id="filter-min-salary" class="form-control" placeholder="e.g. 30000" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="filter-max-salary">💰 Max Salary (₹)</label>
+                        <input type="number" id="filter-max-salary" class="form-control" placeholder="e.g. 80000" min="0">
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                        <button type="submit" class="btn btn-cyan" style="flex: 1;">Search</button>
+                        <button type="button" id="reset-btn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- Records Table Card -->
+        <section class="table-card">
+            <div class="table-header-bar">
+                <div class="table-header-title">All Registered Jobs</div>
+                <div id="record-count-badge" class="table-header-counter">Loading records...</div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Salary</th>
+                            <th>Required Skills</th>
+                            <th>Posts</th>
+                            <th>Interview Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jobs-table-body">
+                        <!-- Dynamically populated via view.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="view-state" class="state-message" style="display: none;"></div>
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Job Portal. Built with Express & MySQL.</p>
+        <p>Enterprise Job Management System</p>
+    </footer>
+
+    <script src="js/view.js"></script>
+</body>
+</html>

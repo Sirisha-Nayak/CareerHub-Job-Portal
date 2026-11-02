@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Delete Job Records</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">💼</div>
+                <div class="brand-text">
+                    <h1>CareerHub</h1>
+                    <span>Portal Management</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">📊 Dashboard</a></li>
+                <li class="nav-item"><a href="view.html">📋 View Records</a></li>
+                <li class="nav-item"><a href="add.html">➕ Add Job</a></li>
+                <li class="nav-item"><a href="edit.html">✏️ Edit Job</a></li>
+                <li class="nav-item"><a href="delete.html" class="active">🗑️ Delete Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>🗑️ Delete Job Listings</h2>
+                <p>Safely remove outdated or fulfilled positions from your MySQL database</p>
+            </div>
+            <div>
+                <a href="view.html" class="btn btn-outline">← Back to Records</a>
+            </div>
+        </div>
+
+        <!-- Warning Notice Banner -->
+        <div style="background: #fff1f2; border: 1px solid #fecdd3; border-left: 5px solid #ef4444; border-radius: var(--radius-md); padding: 16px 20px; margin-bottom: 24px; color: #9f1239; font-size: 14px;">
+            <strong>⚠️ Caution:</strong> Deleting a job record will permanently remove it from your database using its primary key. A confirmation step is required before deletion.
+        </div>
+
+        <!-- Records Table Card -->
+        <section class="table-card">
+            <div class="table-header-bar">
+                <div class="table-header-title">Select a Job Record to Remove</div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Job ID</th>
+                            <th>Job Title</th>
+                            <th>Company</th>
+                            <th>Location</th>
+                            <th>Salary</th>
+                            <th>Openings</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="delete-table-body">
+                        <!-- Populated via delete.js -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="delete-state" class="state-message" style="display: none;"></div>
+        </section>
+
+    </main>
+
+    <!-- Deletion Confirmation Modal -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-icon-danger">⚠️</div>
+                <div class="modal-title">Confirm Record Deletion</div>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to permanently delete this job record? This operation cannot be undone.</p>
+                
+                <div class="modal-record-preview">
+                    <p><strong>Record ID:</strong> <span id="modal-job-id-text" class="badge-id">#0</span></p>
+                    <p><strong>Job Title:</strong> <span id="modal-job-title" style="font-weight: 600;">-</span></p>
+                    <p><strong>Company:</strong> <span id="modal-job-company">-</span></p>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
+                <button type="button" id="confirm-delete-btn" class="btn btn-danger">🗑️ Yes, Delete Record</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Job Portal. Built with Express & MySQL.</p>
+        <p>Enterprise Job Management System</p>
+    </footer>
+
+    <script src="js/delete.js"></script>
+</body>
+</html>

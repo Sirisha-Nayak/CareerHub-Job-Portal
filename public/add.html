@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerHub - Add New Job</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Sticky Navigation Bar -->
+    <header class="header-wrapper">
+        <nav class="navbar">
+            <a href="index.html" class="brand-logo">
+                <div class="brand-icon">💼</div>
+                <div class="brand-text">
+                    <h1>CareerHub</h1>
+                    <span>Portal Management</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html">📊 Dashboard</a></li>
+                <li class="nav-item"><a href="view.html">📋 View Records</a></li>
+                <li class="nav-item"><a href="add.html" class="active">➕ Add Job</a></li>
+                <li class="nav-item"><a href="edit.html">✏️ Edit Job</a></li>
+                <li class="nav-item"><a href="delete.html">🗑️ Delete Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2>➕ Post a New Job Opportunity</h2>
+                <p>Fill out the form below to insert a new job record directly into your MySQL database</p>
+            </div>
+            <div>
+                <a href="view.html" class="btn btn-outline">← Back to Records</a>
+            </div>
+        </div>
+
+        <!-- Add Form Card -->
+        <section class="form-card">
+            <h3 class="form-title">Job Details & Requirements</h3>
+            <p class="form-subtitle">Fields marked with <span class="required-star">*</span> are mandatory</p>
+
+            <form id="add-job-form">
+                <div class="form-grid">
+
+                    <!-- Job Title -->
+                    <div class="form-group form-group-full">
+                        <label for="job_title">Job Title <span class="required-star">*</span></label>
+                        <input type="text" id="job_title" class="form-control" placeholder="e.g. Senior Software Engineer" required>
+                        <span class="form-hint">Specify the official job designation</span>
+                    </div>
+
+                    <!-- Company Name -->
+                    <div class="form-group">
+                        <label for="company_name">Company Name <span class="required-star">*</span></label>
+                        <input type="text" id="company_name" class="form-control" placeholder="e.g. Infosys, Google, Wipro" required>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="form-group">
+                        <label for="job_location">Location / City <span class="required-star">*</span></label>
+                        <input type="text" id="job_location" class="form-control" placeholder="e.g. Hyderabad, Bengaluru, Remote" required>
+                    </div>
+
+                    <!-- Salary -->
+                    <div class="form-group">
+                        <label for="salary">Monthly Salary (₹ INR)</label>
+                        <input type="number" id="salary" class="form-control" placeholder="e.g. 50000" min="0" step="0.01">
+                        <span class="form-hint">Optional, leave blank if negotiable</span>
+                    </div>
+
+                    <!-- Number of Posts -->
+                    <div class="form-group">
+                        <label for="number_of_posts">Number of Openings</label>
+                        <input type="number" id="number_of_posts" class="form-control" value="1" min="1">
+                        <span class="form-hint">Number of available vacant positions</span>
+                    </div>
+
+                    <!-- Required Skills -->
+                    <div class="form-group form-group-full">
+                        <label for="required_skills">Required Skills</label>
+                        <input type="text" id="required_skills" class="form-control" placeholder="e.g. React, Node.js, MySQL, Docker">
+                        <span class="form-hint">Separate multiple skills with commas</span>
+                    </div>
+
+                    <!-- Interview Date -->
+                    <div class="form-group form-group-full">
+                        <label for="interview_date">Scheduled Interview Date</label>
+                        <input type="date" id="interview_date" class="form-control">
+                        <span class="form-hint">Optional walk-in or technical round date</span>
+                    </div>
+
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="form-actions">
+                    <a href="view.html" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" id="submit-btn" class="btn btn-primary">💾 Save Job Record</button>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 CareerHub Job Portal. Built with Express & MySQL.</p>
+        <p>Enterprise Job Management System</p>
+    </footer>
+
+    <script src="js/add.js"></script>
+</body>
+</html>

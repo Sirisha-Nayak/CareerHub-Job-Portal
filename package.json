@@ -1,0 +1,14 @@
+{
+  "name": "careerhub",
+  "version": "1.0.0",
+  "description": "Online Job Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
+  }
+}
